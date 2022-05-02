@@ -1,0 +1,28 @@
+<view class="info">
+  <view wx:if="{{hasUserInfo&&canIUse}}">
+    <image src="{{userInfo.avatarUrl}}" mode="aspectFill"></image>
+    <text>{{userInfo.nickName}}</text>
+  </view>
+  <view wx:else>
+    <button style="display:flex;flex-direction:column;align-items:center;" plain open-type="getUserInfo"
+      bindgetuserinfo="getUserInfo">
+      <image src="/images/user-unlogin.png" mode="aspectFill"></image>
+      <text>未登录,点击登录</text>
+    </button>
+  </view>
+</view>
+<scroll-view scroll-y="true" class="collect">
+  <view class="title"><text>我的收藏</text><text wx:if="{{collect_list}}">({{collect_list.length}})</text></view>
+  <view class="hint" wx:if="{{!collect_list&&!hasUserInfo||!canIUse}}"><text>点击登录，获取专属你的收藏列表吧</text></view>
+  <view class="hint" wx:elif="{{!collect_list&&hasUserInfo&&canIUse}}"><text>你还没有收藏的内容</text></view>
+  <view wx:if="{{collect_list}}" class="list-items" wx:for="{{collect_list}}" wx:key="index" data-id="{{index}}"
+    bindtap="Into">
+    <view class="item-text">
+      <view class="item-title"><text>{{item.title}}</text></view>
+      <view class="item-source"><text>{{item.source}} {{item.date}}</text></view>
+    </view>
+    <view wx:if="{{item.image_list.length>0}}" class="item-image">
+      <image src="{{item.image_list[0].url}}"></image>
+    </view>
+  </view>
+</scroll-view>

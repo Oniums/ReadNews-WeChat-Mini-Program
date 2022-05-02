@@ -1,0 +1,114 @@
+page {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  padding: 10rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.title_name {
+  padding: 30rpx;
+  font-size: larger;
+  font-weight: bolder;
+}
+
+.title_source {
+  color: gray;
+  font-size: small;
+  padding: 10rpx;
+}
+
+.content {
+  padding: 10rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: center;
+}
+
+.paragraph {
+  padding-left: 15rpx;
+  padding-right: 15rpx;
+  padding-top: 10rpx;
+  padding-bottom: 30rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+}
+
+.img {
+  width: 700rpx;
+}
+
+
+
+/*推荐列表配置*/
+.recommend-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100rpx;
+  margin-bottom: 50rpx;
+  font-size: larger;
+  font-weight: bolder;
+}
+
+.list-items {
+  border-bottom: 1px solid gainsboro;
+  padding: 10rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.item-text {
+  display: flex;
+  flex-direction: column;
+  flex: 70%;
+  padding: 10rpx;
+  text-align: left;
+}
+
+.item-title {
+  flex: 80%;
+  display: flex;
+  justify-content: left;
+}
+
+.item-source {
+  flex: 20%;
+  color: gray;
+  font-size: smaller;
+}
+
+.item-image {
+  flex: 30%;
+  padding: 10rpx;
+}
+
+.item-image>image {
+  width: 235rpx;
+  height: 150rpx;
+}
+
+.bottom-bar {
+  background-color: white;
+  flex: 5%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  border-top: 1px solid whitesmoke;
+  justify-content: space-between;
+  align-items: center;
+}
+.bottom-bar image{
+  width:50rpx;
+  height:50rpx;
+}
+button[plain] {
+  border: none;
+  border-color: transparent;
+}

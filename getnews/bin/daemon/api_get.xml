@@ -1,0 +1,31 @@
+<service>
+	<id>api_get.exe</id>
+	<name>API_Get</name>
+	<description>API定时获取</description>
+	<executable>C:\Program Files\NodeJs\node.exe</executable>
+	<argument>--harmony</argument>
+	<argument>C:\Program Files\Express\Get\node_modules\node-windows\lib\wrapper.js</argument>
+	<argument>--file</argument>
+	<argument>C:\Program Files\Express\Get\bin\www</argument>
+	<argument>--scriptoptions=</argument>
+	<argument>--log</argument>
+	<argument>API_Get wrapper</argument>
+	<argument>--grow</argument>
+	<argument>0.25</argument>
+	<argument>--wait</argument>
+	<argument>1</argument>
+	<argument>--maxrestarts</argument>
+	<argument>3</argument>
+	<argument>--abortonerror</argument>
+	<argument>n</argument>
+	<argument>--stopparentfirst</argument>
+	<argument>undefined</argument>
+	<logmode>rotate</logmode>
+	<stoptimeout>30sec</stoptimeout>
+	<serviceaccount>
+		<domain>root</domain>
+		<user>LocalSystem</user>
+		<password></password>
+	</serviceaccount>
+	<workingdirectory>C:\Program Files\Express\Get</workingdirectory>
+</service>

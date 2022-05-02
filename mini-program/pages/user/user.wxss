@@ -1,0 +1,91 @@
+/* pages/user/user.wxss */
+page{
+  display: flex;
+  flex-direction: column;
+  width:100%;
+}
+.info{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 5px solid whitesmoke;
+}
+.info view{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.info view image{
+  margin-top: 50rpx;
+  margin-bottom: 25rpx;
+  width:175rpx;
+  height:175rpx;
+  border-radius: 50%;
+}
+.info view text{
+  margin-bottom: 50rpx;
+  font-size: large;
+}
+.title{
+  padding-top: 20rpx;
+  margin: 20rpx;
+}
+.hint{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: small;
+  color: gray;
+  margin-top:250rpx;
+}
+button[plain] {
+  border: none;
+  border-color: transparent;
+}
+/*收藏列表*/
+.list-items {
+  border-bottom: 1px solid gainsboro;
+  padding: 10rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.item-text {
+  display: flex;
+  flex-direction: column;
+  flex: 70%;
+  padding: 10rpx;
+  text-align: left;
+}
+
+.item-title {
+  flex: 80%;
+  display: flex;
+  justify-content: left;
+}
+
+.item-source {
+  flex: 20%;
+  color: gray;
+  font-size: smaller;
+}
+
+.item-image {
+  flex: 30%;
+  padding: 10rpx;
+}
+
+.item-image>image {
+  width: 235rpx;
+  height: 150rpx;
+}
+
+
+.collect{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+}

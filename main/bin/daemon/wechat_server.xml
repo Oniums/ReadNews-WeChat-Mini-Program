@@ -1,0 +1,31 @@
+<service>
+	<id>wechat_server.exe</id>
+	<name>Wechat_Server</name>
+	<description>微信小程序项目服务器</description>
+	<executable>C:\Program Files\NodeJs\node.exe</executable>
+	<argument>--harmony</argument>
+	<argument>C:\Program Files\Express\Server\node_modules\node-windows\lib\wrapper.js</argument>
+	<argument>--file</argument>
+	<argument>C:\Program Files\Express\Server\bin\www</argument>
+	<argument>--scriptoptions=</argument>
+	<argument>--log</argument>
+	<argument>Wechat_Server wrapper</argument>
+	<argument>--grow</argument>
+	<argument>0.25</argument>
+	<argument>--wait</argument>
+	<argument>1</argument>
+	<argument>--maxrestarts</argument>
+	<argument>3</argument>
+	<argument>--abortonerror</argument>
+	<argument>n</argument>
+	<argument>--stopparentfirst</argument>
+	<argument>undefined</argument>
+	<logmode>rotate</logmode>
+	<stoptimeout>30sec</stoptimeout>
+	<serviceaccount>
+		<domain>root</domain>
+		<user>LocalSystem</user>
+		<password></password>
+	</serviceaccount>
+	<workingdirectory>C:\Program Files\Express\Server</workingdirectory>
+</service>

@@ -1,0 +1,44 @@
+<!--pages/local/local.wxml-->
+<!--pages/Hot/Hot.wxml-->
+<import src="/pages/pagestate/pagestate.wxml" />
+<view>
+  <view wx:if="{{weather}}" class="weather" bindtap="show_predict">
+    <view style="width:100%;height:100%;display:flex;flex-direction:row;">
+      <view
+        style="width:30%;display:flex;flex-direction:column;height:100%;padding-left:20rpx;padding-right:20rpx;margin:auto">
+        <text style="flex:60%;font-size:50rpx;">{{weather.cityInfo.c3}}</text>
+        <text
+          style="flex:40%;font-size:small;color:{{degree}};">空气：{{weather.now.aqi}}{{weather.now.aqiDetail.quality}}</text>
+      </view>
+      <view
+        style="width:70%;display:flex;flex-direction:row;height:100%;justify-content:space-bettween;align-items:center;">
+        <view style="display:flex;flex-direction:row;align-items:center;">
+          <image style="flex:1;width:125rpx;height:125rpx;" src="{{weather.now.weather_pic}}" />
+          <text style="flex:1;font-size:100rpx;color:gray;">{{weather.now.temperature}}°</text>
+        </view>
+        <view style="display:flex;flex-direction:column;font-size:small;text-align:right;">
+          <text>湿度:{{weather.now.sd}}</text>
+          <text>{{weather.now.wind_direction}}:{{weather.now.wind_power}}</text>
+          <text>更新时间:{{weather.now.temperature_time}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{list_data.local}}" class="list-items {{index}}" wx:for="{{list_data.local}}" wx:key="index"
+    data-id="{{index}}" bindtap="Into">
+    <view class="item-text">
+      <view class="item-title"><text>{{item.title}}</text></view>
+      <view wx:if="{{item.image_list.length>3}}" class="item-image-list">
+        <image wx:for="{{item.image_list}}" class="image-{{index}}" wx:key="index" wx:for-item="image"
+          wx:if="{{index<3}}" src="{{image.url}}">
+        </image>
+      </view>
+      <view class="item-source"><text>{{item.source}} {{item.pubDate}}</text></view>
+    </view>
+    <view wx:if="{{item.image_list.length>0 && item.image_list.length<=3}}" class="item-image">
+      <image src="{{item.image_list[0].url}}"></image>
+    </view>
+  </view>
+  <view class="loading-view" style="width:100%;height:200rpx;"><template is="bottomstate" data="{{...bottomState}}" />
+  </view>
+</view>

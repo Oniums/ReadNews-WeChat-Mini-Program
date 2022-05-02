@@ -1,0 +1,42 @@
+<import src="/pages/pagestate/pagestate.wxml" />
+<template is="pagestate" data="{{...pageState}}" />
+<scroll-view scroll-y="true"  style="flex:95%;width:100%;display:flex;flex-direction:column;overflow:hidden;">
+  <view class="title">
+    <text class="title_name">{{content.title}}</text>
+    <text class="title_source">{{content.source}} {{content.pubDate}}</text>
+  </view>
+  <view class="content">
+    <view class="paragraph" wx:for="{{content.content}}" wx:key="index">
+      <image class="img" wx:if="{{item.url}}" src="{{item.url}}" mode="aspectFit"></image>
+      <text wx:else user-select="true" space="emsp">{{item}}</text>
+    </view>
+  </view>
+  <view wx:if="{{content}}" class="recommend">
+    <view class="recommend-icon"><text>相关推荐</text></view>
+    <view wx:if="{{recommend_list}}" class="list-items" wx:for="{{recommend_list}}" wx:key="index" data-id="{{index}}"
+      bindtap="Into">
+      <view class="item-text">
+        <view class="item-title"><text>{{item.title}}</text></view>
+        <view class="item-source"><text>{{item.source}} {{item.pubDate}}</text></view>
+      </view>
+      <view wx:if="{{item.image_list.length>0}}" class="item-image">
+        <image src="{{item.image_list[0].url}}"></image>
+      </view>
+    </view>
+    <view class="list-items" style="width:100%;height:50rpx;"></view>
+  </view>
+</scroll-view>
+<view class="bottom-bar">
+  <image wx:if="{{hasUserInfo}}" style="margin-left: 100rpx;"
+    src="{{collect?'/images/collected.png':'/images/collect.png'}}" bindtap="collect"/>
+  <button wx:else style="width:50rpx;height:50rpx;margin:0px;padding:0px;margin-left:100rpx;align-items:center;" plain open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+    <image style="width:50rpx;height:50rpx" src="{{collect?'/images/collected.png':'/images/collect.png'}}" />
+  </button>
+  <button style="width:50rpx;height:50rpx;margin:0px;padding:0px;align-items:center;" plain open-type="share">
+    <image style="width:50rpx;height:50rpx" src="/images/wechat.png"></image>
+  </button>
+  <button style="width:50rpx;height:50rpx;margin:0px;padding:0px;margin-right:100rpx;align-items:center;" plain bindtap="onShareTimeline">
+    <image style="width:50rpx;height:50rpx" src="/images/pyq.png"></image>
+  </button>
+ 
+</view>

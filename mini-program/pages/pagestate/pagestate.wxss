@@ -1,0 +1,120 @@
+.page-state-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.page-state-container {
+  animation: fadein 2s 1 ease-out;
+  height: 100%;
+  width: 100%;
+  color:gainsboro;
+}
+
+.page-state-container~view {
+  display: none;
+}
+
+page {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.loading{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.pulse {
+  width: 10rpx;
+  height: 40rpx;
+  background: gainsboro;
+  margin: 8rpx;
+  border-radius: 20rpx;
+}
+
+.pulse_1 {
+  -webkit-animation: pulse 1s linear infinite alternate;
+  animation: pulse 1s linear infinite alternate;
+}
+
+.pulse_2 {
+  -webkit-animation: pulse 1s linear infinite alternate;
+  animation: pulse 1s linear infinite alternate;
+  animation-delay: 0.1s;
+}
+
+.pulse_3 {
+  -webkit-animation: pulse 1s linear infinite alternate;
+  animation: pulse 1s linear infinite alternate;
+  animation-delay: 0.2s;
+}
+
+.pulse_4 {
+  -webkit-animation: pulse 1s linear infinite alternate;
+  animation: pulse 1s linear infinite alternate;
+  animation-delay: 0.3s;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scaleY(1);
+  }
+
+  100% {
+    transform: scaleY(0);
+  }
+}
+
+.text{
+  font-size: 30px;
+}
+
+.more {
+  width: 20rpx;
+  height: 20rpx;
+  background: #1296db;
+  border-radius: 50%;
+  margin-left: 15rpx;
+}
+
+.more_1 {
+  -webkit-animation: more 1s linear infinite alternate;
+  animation: more 1s linear infinite alternate;
+}
+
+.more_2 {
+  -webkit-animation: more 1s linear infinite alternate;
+  animation: more 1s linear infinite alternate;
+  animation-delay: 0.5s;
+}
+
+.more_3 {
+  -webkit-animation: more 1s linear infinite alternate;
+  animation: more 1s linear infinite alternate;
+  animation-delay: 1s;
+}
+
+@-webkit-keyframes more {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes more {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0);
+  }
+}

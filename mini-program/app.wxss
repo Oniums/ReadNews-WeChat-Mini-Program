@@ -1,0 +1,21 @@
+/**app.wxss**/
+@import '/pages/pagestate/pagestate.wxss';
+
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+
+
+/* {
+  "pagePath": "pages/video/video",
+  "text": "短视频",
+  "iconPath": "/images/video.png",
+  "selectedIconPath": "/images/video_s.png"
+}, */

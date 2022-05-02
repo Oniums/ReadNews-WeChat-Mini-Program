@@ -1,0 +1,46 @@
+{
+  "pages":[
+    "pages/home/home",
+    "pages/video/video",
+    "pages/user/user",
+    "pages/Hot/Hot",
+    "pages/channel/domestic/domestic",
+    "pages/channel/international/international",
+    "pages/channel/military/military",
+    "pages/channel/financial/financial",
+    "pages/channel/sports/sports",
+    "pages/channel/entertainment/entertainment",
+    "pages/channel/game/game",
+    "pages/channel/social/social",
+    "pages/local/local",
+    "pages/detail/detail"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#1296db",
+    "navigationBarTitleText": "新闻",
+    "navigationBarTextStyle":"white"
+  },
+  "tabBar": {
+    "selectedColor": "#1296db",
+    "list": [{
+      "pagePath": "pages/home/home",
+      "text": "首页",
+      "iconPath": "/images/home.png",
+      "selectedIconPath": "/images/home_s.png"
+    }, 
+     {
+      "pagePath": "pages/user/user",
+      "text": "个人",
+      "iconPath": "/images/user.png",
+      "selectedIconPath": "/images/user_s.png"
+    }]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "用于提供定位信息与天气预报服务"
+    }
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

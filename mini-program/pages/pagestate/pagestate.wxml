@@ -1,0 +1,33 @@
+<template name="pagestate">
+  <view class="page-state-container" wx:if="{{state != 'finish'}}">
+    <view class="page-state-loading page-state-center" wx:if="{{state == 'loading'}}">
+      <view><text class="text">PT News</text></view>
+      <view class="loading">
+        <view class="pulse pulse_1"></view>
+        <view class="pulse pulse_2"></view>
+        <view class="pulse pulse_3"></view>
+        <view class="pulse pulse_4"></view>
+      </view>
+    </view>
+    <view class="page-state-error page-state-center" wx:if="{{state == 'error'}}">
+      <image src="/images/error.png" style="width:100rpx;height:100rpx;"></image>
+      <view><text>{{message}}</text></view>
+      <view bindtap="onRetry"><text>重新加载</text></view>
+    </view>
+  </view>
+</template>
+
+<template name="bottomstate">
+  <view class="page-state-container" wx:if="{{state != 'finish'}}">
+    <view class="page-state-loading page-state-center" wx:if="{{state == 'loading'}}">
+      <view class="loading">
+        <view class="more more_1"></view>
+        <view class="more more_2"></view>
+        <view class="more more_3"></view>
+      </view>
+    </view>
+    <view class="page-state-error page-state-center" wx:if="{{state == 'error'}}">
+      <view bindtap="onRetry"><text>重新加载</text></view>
+    </view>
+  </view>
+</template>

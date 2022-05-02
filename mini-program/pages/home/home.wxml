@@ -1,0 +1,150 @@
+<!--pages/xxxxxx.wxml-->
+<import src="/pages/pagestate/pagestate.wxml" />
+<view class='covers' hidden="{{cover_is_hidden}}" />
+<view class="predict" wx:if="{{predict}}">
+  <view style="padding-top: 10rpx;" bindtap="hidden_predict">
+    <image style="width:50rpx;height:50rpx;" src="/images/close.png"></image>
+  </view>
+  <view style="display:flex;flex-direction:row;justify-content:space-between;width:100%;">
+    <text bindtap="back" style="padding-left:30rpx;opacity:{{back}}">◀</text>
+    <text>{{predict_list.mouth}}月{{predict_list.date}}日 星期{{predict_list.weekday}}</text>
+    <text bindtap="next" style="padding-right:30rpx;opacity:{{next}}">▶</text>
+  </view>
+  <view
+    style="display:flex;flex-direction:row;background:rgba(255, 255, 255, 0.2);border-radius: 30rpx;margin-top:25rpx;">
+    <text
+      style="padding:10rpx;padding-left:20rpx;padding-right:20rpx;border-radius: 30rpx;background:rgba(255, 255, 255, {{day}});"
+      bindtap="change">白天预报</text>
+    <text
+      style="padding:10rpx;padding-left:20rpx;padding-right:20rpx;border-radius: 30rpx;background:rgba(255, 255, 255, {{night}});"
+      bindtap="change">夜间预报</text>
+  </view>
+  <view style="display:flex;flex-direction:row;">
+    <view style="display:flex;flex-direction:row;">
+      <text wx:if="{{state_day}}" style="font-size:150rpx;">{{predict_list.day_air_temperature}}</text>
+      <text wx:else style="font-size:150rpx;">{{predict_list.night_air_temperature}}</text>
+      <text style="font-size:50rpx;padding-top:25rpx;">℃</text>
+    </view>
+    <view wx:if="{{state_day}}"
+      style="display:flex;flex-direction:column;margin:20rpx;align-items:center; padding-top:10rpx;">
+      <image style="width:75rpx;height:75rpx;" src="{{predict_list.day_weather_pic}}" />
+      <text style="font-size:50rpx;">{{predict_list.day_weather}}</text>
+    </view>
+    <view wx:else style="display:flex;flex-direction:column;margin:20rpx;align-items:center; padding-top:10rpx;">
+      <image style="width:75rpx;height:75rpx;" src="{{predict_list.night_weather_pic}}" />
+      <text style="font-size:50rpx;">{{predict_list.night_weather}}</text>
+    </view>
+  </view>
+  <view style="display:flex;flex-direction:row;align-items:center;">
+    <view
+      style="display:flex;flex-direction:column;align-items:center;margin:20rpx;padding-right:50rpx;border-right:1px solid rgba(255, 255, 255, 0.7) ">
+      <image style="width:75rpx;height:75rpx;" src="/images/ziwai.png"></image>
+      <text style="font-size:small;">{{predict_list.ziwaixian}}</text>
+      <text style="font-size:small;opacity:0.5">紫外线</text>
+    </view>
+    <view wx:if="{{state_day}}"
+      style="display:flex;flex-direction:column;align-items:center;margin:20rpx;padding-left:12.5rpx;padding-right:12.5rpx;">
+      <image style="width:75rpx;height:75rpx;" src="/images/fengxiang.png"></image>
+      <text style="font-size:small;">{{predict_list.day_wind_power}}</text>
+      <text style="font-size:small;opacity:0.5">{{predict_list.day_wind_direction}}</text>
+    </view>
+    <view wx:else
+      style="display:flex;flex-direction:column;align-items:center;margin:20rpx;padding-left:12.5rpx;padding-right:12.5rpx;">
+      <image style="width:75rpx;height:75rpx;" src="/images/fengxiang.png"></image>
+      <text style="font-size:small;">{{predict_list.night_wind_power}}</text>
+      <text style="font-size:small;opacity:0.5">{{predict_list.night_wind_direction}}</text>
+    </view>
+    <view
+      style="display:flex;flex-direction:column;align-items:center;margin:20rpx;padding-left:50rpx;border-left:1px solid rgba(255, 255, 255, 0.7)">
+      <image style="width:75rpx;height:75rpx;" src="/images/jiangshui.png"></image>
+      <text style="font-size:small;">{{predict_list.jiangshui}}</text>
+      <text style="font-size:small;opacity:0.5">降水量</text>
+    </view>
+  </view>
+</view>
+<view class='tab'>
+  <scroll-view class="tab_scroll" scroll-x="true" scroll-left="{{x}}" scroll-with-animation>
+    <view class='tab_item{{tab_id==item.id ?"current":""}}' wx:for="{{tab_list}}" wx:key="id" bindtap='switchTap'
+      data-item="{{index}}">
+      <view>{{item.name}}</view>
+    </view>
+  </scroll-view>
+  <view class="tab_more">
+    <image class="tab_img" src="/images/more.png" bindtap='show_list'></image>
+    <view class="{{status=='show'?'show':'hidden'}}" style='display:{{list_is_show}};'>
+      <view class="list_bar"><text>点击进入栏目</text>
+        <view>
+          <image class="tab_img" src="/images/hidden.png" bindtap='hidden_list' />
+        </view>
+      </view>
+      <view class="list_bar_view">
+        <view class="item-{{tab_id==item.id?'current':''}}" wx:for="{{tab_list}}" data-item="{{index}}" wx:key="id"
+          bindtap="hidden_list">{{item.name}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+<template is="pagestate" data="{{...pageState}}" />
+<view class="content">
+  <swiper class="content-swiper" current="{{content_id}}" bindchange="changetab">
+    <swiper-item class="item-Hot">
+      <scroll-view class="content-scroll" scroll-y scroll-with-animation bindscrolltolower="show_more"
+        bindscrolltoupper="refresh">
+        <include src="/pages/Hot/Hot" />
+      </scroll-view>
+    </swiper-item>
+    <swiper-item class="item-domestic">
+      <scroll-view class="content-scroll" scroll-y scroll-with-animation refresher-enabled
+        bindscrolltolower="show_more">
+        <include src="/pages/channel/domestic/domestic" />
+      </scroll-view>
+    </swiper-item>
+    <swiper-item class="item-international">
+      <scroll-view class="content-scroll" scroll-y scroll-with-animation refresher-enabled
+        bindscrolltolower="show_more">
+        <include src="/pages/channel/international/international" />
+      </scroll-view>
+    </swiper-item>
+    <swiper-item class="item-military">
+      <scroll-view class="content-scroll" scroll-y scroll-with-animation refresher-enabled
+        bindscrolltolower="show_more">
+        <include src="/pages/channel/military/military" />
+      </scroll-view>
+    </swiper-item>
+    <swiper-item class="item-financial">
+      <scroll-view class="content-scroll" scroll-y scroll-with-animation refresher-enabled
+        bindscrolltolower="show_more">
+        <include src="/pages/channel/financial/financial" />
+      </scroll-view>
+    </swiper-item>
+    <swiper-item class="item-social">
+      <scroll-view class="content-scroll" scroll-y scroll-with-animation refresher-enabled
+        bindscrolltolower="show_more">
+        <include src="/pages/channel/social/social" />
+      </scroll-view>
+    </swiper-item>
+    <swiper-item class="item-sports">
+      <scroll-view class="content-scroll" scroll-y scroll-with-animation refresher-enabled
+        bindscrolltolower="show_more">
+        <include src="/pages/channel/sports/sports" />
+      </scroll-view>
+    </swiper-item>
+    <swiper-item class="item-game">
+      <scroll-view class="content-scroll" scroll-y scroll-with-animation refresher-enabled
+        bindscrolltolower="show_more">
+        <include src="/pages/channel/game/game" />
+      </scroll-view>
+    </swiper-item>
+    <swiper-item class="item-local">
+      <scroll-view class="content-scroll" scroll-y scroll-with-animation refresher-enabled bindscrolltolower="getlocal">
+        <include src="/pages/local/local" />
+      </scroll-view>
+    </swiper-item>
+    <swiper-item class="item-entertainment">
+      <scroll-view class="content-scroll" scroll-y scroll-with-animation refresher-enabled
+        bindscrolltolower="show_more">
+        <include src="/pages/channel/entertainment/entertainment" />
+      </scroll-view>
+    </swiper-item>
+  </swiper>
+</view>

@@ -1,0 +1,20 @@
+<import src="/pages/pagestate/pagestate.wxml" />
+<view>
+  <view wx:if="{{list_data.international}}" class="list-items" wx:for="{{list_data.international}}" wx:key="index"
+    data-id="{{index}}" bindtap="Into">
+    <view class="item-text">
+      <view class="item-title"><text>{{item.title}}</text></view>
+      <view wx:if="{{item.image_list.length>3}}" class="item-image-list">
+        <image wx:for="{{item.image_list}}" class="image-{{index}}" wx:key="index" wx:for-item="image"
+          wx:if="{{index<3}}" src="{{image.url}}">
+        </image>
+      </view>
+      <view class="item-source"><text>{{item.source}} {{item.pubDate}}</text></view>
+    </view>
+    <view wx:if="{{item.image_list.length>0 && item.image_list.length<=3}}" class="item-image">
+      <image src="{{item.image_list[0].url}}"></image>
+    </view>
+  </view>
+  <view class="loading-view" style="width:100%;height:200rpx;"><template is="bottomstate" data="{{...bottomState}}" />
+  </view>
+</view>
